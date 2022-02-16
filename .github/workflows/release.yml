@@ -1,0 +1,39 @@
+name: release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: yarn
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'yarn'
+      - run: yarn install --frozen-lockfile
+      - run: |
+          git config --global user.name 'release-bot'
+          git config --global user.email 'release-bot@users.noreply.github.com'
+      - run: yarn release && git push --follow-tags origin main
+  sync-branch:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: pull-request -> develop
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "develop"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        pr_title: "sync main-dev"
+    - name: pull-request -> staging
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "staging"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        pr_title: "sync main-staging"
