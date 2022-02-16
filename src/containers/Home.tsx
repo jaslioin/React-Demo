@@ -1,26 +1,37 @@
-/* eslint-disable camelcase */
-import { useInfiniteQuery, useQuery } from "react-query";
-import { useSetState } from "react-use";
-import { filter, isNil } from "ramda";
 import styled from "styled-components";
-import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { catApi } from "@/services/catApi";
-import { FlexSection } from "@/components/FlexSection";
-import Card from "@/components/Card";
-import notFound from "@/assets/cat-not-found.jpg";
-import { FixedDiv } from "@/components/FixedDiv";
 import { Path } from "@/constants/paths";
+import { Button } from "@/components/Button";
+import { FlexSection } from "@/components/FlexSection";
 
 export default function Home() {
   return (
     <div>
       <Title>Cat Explorer</Title>
-      <Link to={Path.CAT_EXPLORER}>Start!</Link>
+      <StyledSection justify="center" align="center">
+        <StyledLink to={Path.CAT_EXPLORER}>
+          <StyledButton>
+            Start!
+          </StyledButton>
+        </StyledLink>
+      </StyledSection>
     </div>
   );
 }
 
 const Title = styled.h1`
   text-align: center;
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
+`;
+const StyledButton = styled(Button)`
+  width:6rem;
+  height:4rem;
+`;
+const StyledSection = styled(FlexSection)`
+  height:100%;
 `;
