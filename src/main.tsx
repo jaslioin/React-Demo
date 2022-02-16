@@ -1,7 +1,7 @@
 import "normalize.css/normalize.css";
 import "./styles/global.css";
 import { StrictMode } from "react";
-import ReactDOM from "react-dom";
+import * as ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import App from "./App";
 

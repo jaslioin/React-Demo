@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Transition } from "react-transition-group";
 import { CSSProperties } from "react";
 import { FixedDiv } from "@/components/FixedDiv";
 import { Z_INDEX } from "@/constants/zIndex";
@@ -21,20 +20,15 @@ const LoadingPage: React.FC = ({ children }) => {
   const { isLoading } = useLoading();
 
   return (
-    <Transition in={isLoading} timeout={400} appear>
-      {(state) => (
-        <StyledFixedDiv
-          position="full-page"
-          style={{
-          ...defaultStyle,
-          ...transitionStyles[state],
-        }}
-        >
-          Loading...
-        </StyledFixedDiv>
-    )}
-    </Transition>
-);
+    <StyledFixedDiv
+      position="full-page"
+      style={{
+        ...defaultStyle,
+      }}
+    >
+      Loading...
+    </StyledFixedDiv>
+  );
 };
 const StyledFixedDiv = styled(FixedDiv)`
   z-index: ${Z_INDEX.LOADING};
@@ -43,6 +37,6 @@ const StyledFixedDiv = styled(FixedDiv)`
   display: flex;
   justify-content: center;
   align-items: center;
-  top:0;
+  top: 0;
 `;
 export default LoadingPage;

@@ -1,1 +1,1 @@
-export const DemoType = string
+export type DemoType = string

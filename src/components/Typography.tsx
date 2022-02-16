@@ -1,6 +1,5 @@
 import { HTMLAttributes } from "react";
 import styled from "styled-components";
-import { defaultTheme } from "@/styles/theme";
 
 type Variant = "primary";
 export type TypographyProps = {
@@ -10,7 +9,7 @@ export type TypographyProps = {
 
 export const Typography = ({
   variant = "primary",
-  color = defaultTheme.colors.textDarker,
+  color = "black",
   children,
   ...rest
 }: TypographyProps) => (
