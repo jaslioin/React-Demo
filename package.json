@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.26.0",
-    "jotai": "1.5.3",
+    "jotai": "1.6.0",
     "normalize.css": "8.0.1",
     "ramda": "0.28.0",
     "react": "17.0.2",
