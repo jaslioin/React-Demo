@@ -8,6 +8,7 @@ declare module "styled-components" {
 			danger: string;
 			warning: string;
 			success: string;
+			info: string;
 		};
 	}
 }
