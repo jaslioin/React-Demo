@@ -60,7 +60,7 @@ export default function CatExplorer() {
   };
 
   return (
-    <Container>
+    <Container align="center">
       {!isFetching && (
         <StyledFlexSection gap={16} justify="center" wrap="wrap">
           {isError && <>Something went wrong, please try again...</>}
@@ -71,7 +71,7 @@ export default function CatExplorer() {
                 onClick={() => handleCardClick(v)}
                 type="button"
               >
-                <Card>
+                <AnimatedCard>
                   <FlexSection>
                     <CatImage
                       src={v?.image?.url || notFound}
@@ -79,7 +79,7 @@ export default function CatExplorer() {
                       data-id={v.id}
                     />
                   </FlexSection>
-                </Card>
+                </AnimatedCard>
               </Button>
             ))}
           {!isError && currentCats.length === 0 && (
@@ -143,5 +143,12 @@ const CatImage = styled.img.attrs((p) => ({ ...p, width: 200 }))`
 const CatDetailModal = styled(Modal)`
   .modal-container {
     max-width: max(420px, 60vw);
+  }
+`;
+
+const AnimatedCard = styled(Card)`
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: scale(1.1);
   }
 `;
