@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Path } from "@/constants/paths";
-import { Button } from "@/components/Button";
 import { FlexSection } from "@/components/FlexSection";
 
 export default function Home() {
@@ -10,9 +9,7 @@ export default function Home() {
       <Title>Cat Explorer</Title>
       <StyledSection justify="center" align="center">
         <StyledLink to={Path.CAT_EXPLORER}>
-          <StyledButton>
-            Start!
-          </StyledButton>
+          <StyledButton type="button">Start!</StyledButton>
         </StyledLink>
       </StyledSection>
     </div>
@@ -28,10 +25,10 @@ const StyledLink = styled(Link)`
     color: inherit;
   }
 `;
-const StyledButton = styled(Button)`
-  width:6rem;
-  height:4rem;
+const StyledButton = styled.button`
+  width: 6rem;
+  height: 4rem;
 `;
 const StyledSection = styled(FlexSection)`
-  height:100%;
+  height: 100%;
 `;

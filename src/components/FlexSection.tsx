@@ -6,24 +6,17 @@ export const FlexSection = styled.div<{
   gap?: number;
   direction?: string;
   wrap?: string;
+  rowGap?: number;
 }>`
   display: flex;
-  ${({ justify, align, gap, direction, wrap }) => css`
+  ${({ justify, align, gap, direction, wrap, rowGap }) => css`
     flex-direction: ${direction || "row"};
     justify-content: ${justify || "normal"};
     justify-items: ${justify || "normal"};
     align-items: ${align || "normal"};
     align-content: ${align || "normal"};
-    gap: ${`${gap}px` || null};
+    gap: ${gap ? `${gap}px` : null};
     flex-wrap: ${wrap || "nowrap"};
+    row-gap: ${rowGap ? `${rowGap}px` : null};
   `}
 `;
-export const LeftSection = styled(FlexSection).attrs((p) => ({
-  ...p,
-  justify: "flex-start",
-}))({});
-
-export const RightSection = styled(FlexSection).attrs((p) => ({
-  ...p,
-  justify: "flex-end",
-}))``;

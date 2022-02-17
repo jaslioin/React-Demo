@@ -1,42 +1,32 @@
-import styled from "styled-components";
-import { CSSProperties } from "react";
+import styled, { css } from "styled-components";
 import { FixedDiv } from "@/components/FixedDiv";
 import { Z_INDEX } from "@/constants/zIndex";
-import { useLoading } from "@/hooks/useLoading";
 
-const defaultStyle: CSSProperties = {
-  transition: `opacity ${400}ms ease-in-out`,
-  opacity: 0,
-  visibility: "visible",
+type Props = {
+  isLoading: boolean;
 };
-
-const transitionStyles = {
-  entering: { opacity: 1, visibility: "visible" },
-  entered: { opacity: 1, visibility: "visible" },
-  exiting: { opacity: 0, visibility: "visible" },
-  exited: { opacity: 0, visibility: "hidden" },
-};
-const LoadingPage: React.FC = ({ children }) => {
-  const { isLoading } = useLoading();
-
-  return (
-    <StyledFixedDiv
-      position="full-page"
-      style={{
-        ...defaultStyle,
-      }}
-    >
-      Loading...
-    </StyledFixedDiv>
-  );
-};
-const StyledFixedDiv = styled(FixedDiv)`
+const LoadingPage: React.FC<Props> = ({ isLoading }) => (
+  <StyledFixedDiv isDisplay={isLoading} position="center">
+    Loading...
+  </StyledFixedDiv>
+);
+const StyledFixedDiv = styled(FixedDiv)<{
+  isDisplay: boolean;
+}>`
   z-index: ${Z_INDEX.LOADING};
-  background-color: white;
-  color: black;
+  background-color: ${({ theme }) => theme.colors.loadingBg};
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  visibility: visible;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
+  transition: visibility 0.3s ease, opacity 0.3s ease;
+  ${({ isDisplay }) => !isDisplay
+    && css`
+      opacity: 0;
+      visibility: hidden;
+    `}
 `;
 export default LoadingPage;

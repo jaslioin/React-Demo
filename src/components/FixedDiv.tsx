@@ -13,7 +13,7 @@ type Position =
   | "full-page";
 export const FixedDiv = styled.div<{ position: Position }>`
   position: fixed;
-  z-index: ${Z_INDEX.FIXED};
+  z-index: ${Z_INDEX.MODAL};
   ${({ position }) => {
     switch (position) {
       case "top":

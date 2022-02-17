@@ -10,6 +10,7 @@ const queryClient = new QueryClient({
     queries: {
       staleTime: 60 * 1000, // lower refetch frequency that blocks interaction
       retry: false,
+      refetchOnWindowFocus: false,
     },
   },
 });
