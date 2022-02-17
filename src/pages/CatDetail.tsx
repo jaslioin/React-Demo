@@ -15,7 +15,7 @@ export const CatDetail: React.FC<Props> = ({
 }) => (
   <StyledFlexSection justify="center" direction="row" gap={16}>
     <CatImage src={image?.url || notFound} width={300} alt={description} />
-    <FlexSection justify="center" direction="column" rowGap={8}>
+    <FlexSection justify="flex-start" direction="column" rowGap={8}>
       <EntrySection>
         <span>Life Span</span>
         <span>{life_span}</span>
