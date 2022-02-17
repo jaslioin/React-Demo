@@ -60,7 +60,7 @@ export default function CatExplorer() {
   };
 
   return (
-    <Container>
+    <Container align="center">
       {!isFetching && (
         <StyledFlexSection gap={16} justify="center" wrap="wrap">
           {isError && <>Something went wrong, please try again...</>}
