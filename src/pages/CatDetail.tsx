@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import styled from "styled-components";
-import { FlexSection } from "@/components/FlexSection";
+import { FlexSection } from "@/layouts/FlexSection";
 import { Breed } from "@/types/cat";
 
 type Props = Partial<Breed>;

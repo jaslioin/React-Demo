@@ -4,15 +4,16 @@ import { useSetState } from "react-use";
 import styled from "styled-components";
 import { useMemo, useRef, useState } from "react";
 import { catApi } from "@/services/catApi";
-import { FlexSection } from "@/components/FlexSection";
+import { FlexSection } from "@/layouts/FlexSection";
 import Card from "@/components/Card";
 import notFound from "@/assets/cat-not-found.jpg";
-import { FixedDiv } from "@/components/FixedDiv";
+import { FixedDiv } from "@/layouts/FixedDiv";
 import { Modal, ModalRefObject } from "@/components/Modal";
 import { CatDetail } from "@/pages/CatDetail";
 import { Breed } from "@/types/cat";
 import LoadingPage from "@/pages/LoadingPage";
 import { Button } from "@/components/Button";
+import { Container } from "@/layouts/Container";
 
 export default function CatExplorer() {
   const modalRef = useRef<ModalRefObject>();
@@ -126,11 +127,6 @@ export default function CatExplorer() {
     </Container>
   );
 }
-const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  align-items: center;
-`;
 
 const StyledFlexSection = styled(FlexSection)`
   width: 100vw;

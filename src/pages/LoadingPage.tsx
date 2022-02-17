@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { FixedDiv } from "@/components/FixedDiv";
+import { FixedDiv } from "@/layouts/FixedDiv";
 import { Z_INDEX } from "@/constants/zIndex";
 
 type Props = {
