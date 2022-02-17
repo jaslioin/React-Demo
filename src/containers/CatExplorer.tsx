@@ -4,15 +4,16 @@ import { useSetState } from "react-use";
 import styled from "styled-components";
 import { useMemo, useRef, useState } from "react";
 import { catApi } from "@/services/catApi";
-import { FlexSection } from "@/components/FlexSection";
+import { FlexSection } from "@/layouts/FlexSection";
 import Card from "@/components/Card";
 import notFound from "@/assets/cat-not-found.jpg";
-import { FixedDiv } from "@/components/FixedDiv";
+import { FixedDiv } from "@/layouts/FixedDiv";
 import { Modal, ModalRefObject } from "@/components/Modal";
 import { CatDetail } from "@/pages/CatDetail";
 import { Breed } from "@/types/cat";
 import LoadingPage from "@/pages/LoadingPage";
 import { Button } from "@/components/Button";
+import { Container } from "@/layouts/Container";
 
 export default function CatExplorer() {
   const modalRef = useRef<ModalRefObject>();
@@ -59,7 +60,7 @@ export default function CatExplorer() {
   };
 
   return (
-    <Container>
+    <Container align="center">
       {!isFetching && (
         <StyledFlexSection gap={16} justify="center" wrap="wrap">
           {isError && <>Something went wrong, please try again...</>}
@@ -70,7 +71,7 @@ export default function CatExplorer() {
                 onClick={() => handleCardClick(v)}
                 type="button"
               >
-                <Card>
+                <AnimatedCard>
                   <FlexSection>
                     <CatImage
                       src={v?.image?.url || notFound}
@@ -78,7 +79,7 @@ export default function CatExplorer() {
                       data-id={v.id}
                     />
                   </FlexSection>
-                </Card>
+                </AnimatedCard>
               </Button>
             ))}
           {!isError && currentCats.length === 0 && (
@@ -126,11 +127,6 @@ export default function CatExplorer() {
     </Container>
   );
 }
-const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  align-items: center;
-`;
 
 const StyledFlexSection = styled(FlexSection)`
   width: 100vw;
@@ -147,5 +143,12 @@ const CatImage = styled.img.attrs((p) => ({ ...p, width: 200 }))`
 const CatDetailModal = styled(Modal)`
   .modal-container {
     max-width: max(420px, 60vw);
+  }
+`;
+
+const AnimatedCard = styled(Card)`
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: scale(1.1);
   }
 `;

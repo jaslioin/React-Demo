@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import styled from "styled-components";
-import { FlexSection } from "@/components/FlexSection";
+import notFound from "@/assets/cat-not-found.jpg";
+import { FlexSection } from "@/layouts/FlexSection";
 import { Breed } from "@/types/cat";
 
 type Props = Partial<Breed>;
@@ -13,22 +14,23 @@ export const CatDetail: React.FC<Props> = ({
   description,
 }) => (
   <StyledFlexSection justify="center" direction="row" gap={16}>
-    <CatImage src={image?.url} width={300} alt={description} />
-    <FlexSection justify="center" direction="column" rowGap={8}>
-      <EntrySection>
-        <span>Life Span</span>
-        <span>{life_span}</span>
-      </EntrySection>
-      <EntrySection>
-        <span>Origin</span>
-        <span>{origin}</span>
-      </EntrySection>
+    <CatImage src={image?.url || notFound} width={300} alt={description} />
+    <FlexSection justify="flex-start" direction="column" rowGap={8}>
       <EntrySection>
         <span>Name</span>
         <span>{name}</span>
       </EntrySection>
       <EntrySection>
-        <span>{description}</span>
+        <span>Origin</span>
+        <span>{origin}</span>
+      </EntrySection>
+
+      <EntrySection>
+        <span>Life Span</span>
+        <span>{life_span}</span>
+      </EntrySection>
+      <EntrySection>
+        <p>{description}</p>
       </EntrySection>
       <FlexSection justify="flex-end">
         <a href={wikipedia_url}>...More</a>
@@ -40,15 +42,16 @@ export const CatDetail: React.FC<Props> = ({
 const StyledFlexSection = styled(FlexSection)`
   padding: 16px;
   overflow: scroll;
+  max-height: 80vh;
   @media screen and (max-width: 800px) {
     flex-wrap: wrap;
   }
 `;
 
 const CatImage = styled.img`
-  object-fit: cover;
-  border-radius: 15px;
+  object-fit: contain;
   flex-basis: 40%;
+  flex-grow: 0;
 `;
 
 const EntrySection = styled(FlexSection).attrs((p) => ({
