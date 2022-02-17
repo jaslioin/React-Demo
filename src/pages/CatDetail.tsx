@@ -17,16 +17,17 @@ export const CatDetail: React.FC<Props> = ({
     <CatImage src={image?.url || notFound} width={300} alt={description} />
     <FlexSection justify="flex-start" direction="column" rowGap={8}>
       <EntrySection>
-        <span>Life Span</span>
-        <span>{life_span}</span>
+        <span>Name</span>
+        <span>{name}</span>
       </EntrySection>
       <EntrySection>
         <span>Origin</span>
         <span>{origin}</span>
       </EntrySection>
+
       <EntrySection>
-        <span>Name</span>
-        <span>{name}</span>
+        <span>Life Span</span>
+        <span>{life_span}</span>
       </EntrySection>
       <EntrySection>
         <p>{description}</p>
