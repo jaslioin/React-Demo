@@ -1,12 +1,11 @@
-import { BrowserRouter } from "react-router-dom";
-import styled from "styled-components";
+import { MemoryRouter } from "react-router-dom";
 import { Routers } from "./Routers";
 
 function App() {
   return (
-    <BrowserRouter>
+    <MemoryRouter>
       <Routers />
-    </BrowserRouter>
+    </MemoryRouter>
   );
 }
 

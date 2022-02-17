@@ -9,22 +9,18 @@ const CatExplorer = lazy(() => import("./containers/CatExplorer"));
 export const Routers = () => (
   <Switch>
     <Route path={Path.HOME} exact>
-      <Suspense
-        fallback={null}
-      >
+      <Suspense fallback={null}>
         <ThemeProvider theme={defaultTheme}>
           <Home />
         </ThemeProvider>
       </Suspense>
     </Route>
     <Route path={Path.CAT_EXPLORER}>
-      <Suspense
-        fallback={null}
-      >
+      <Suspense fallback={null}>
         <ThemeProvider theme={defaultTheme}>
           <CatExplorer />
         </ThemeProvider>
       </Suspense>
     </Route>
   </Switch>
-  );
+);

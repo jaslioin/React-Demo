@@ -44,13 +44,12 @@ export default defineConfig(({ mode }) => {
 		server: {
 			proxy: {
 				"^/cat-api": {
-
-            secure: true,
-            changeOrigin: true,
-            target: "https://api.thecatapi.com",
-            rewrite: (path) => path.replace(/^\/cat-api/, ""),
-        },
-      },
+					secure: true,
+					changeOrigin: true,
+					target: "https://api.thecatapi.com",
+					rewrite: (path) => path.replace(/^\/cat-api/, ""),
+				},
+			},
 		},
 	};
 });

@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import { apiClient } from "./apiClient";
+import { Breed } from "@/types/cat";
 
 type CatSearchResponse = {
 	breeds: unknown[][];
@@ -19,20 +20,7 @@ const search = async ({ breed_id }: { breed_id?: string }) => {
 	});
 	return data;
 };
-type Breed = {
-	id: string;
-	name: string;
-	origin: string;
-	description: string;
-	life_span: string;
-	wikipedia_url: string;
-	image: {
-		id: string;
-		width: number;
-		height: number;
-		url: string;
-	};
-};
+
 const searchBreeds = async ({
 	page,
 	limit,
